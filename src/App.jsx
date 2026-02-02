@@ -1,14 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Route, Routes } from "react-router";
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mailboxes, setMailboxes] = useState([])
 
   return (
     <>
-      <h1>hello world!</h1>
+      <Routes>
+        <Route path="/" element={<main><h1>Post Office</h1></main>}></Route>
+        <Route path="/mailboxes" element={<MailboxList />}></Route>
+        <Route path="/new-mailbox" element={<MailboxForm />}></Route>
+        <Route path="mailboxes/:mailboxId" element={<MailboxDetails />}></Route>
+      </Routes>
     </>
   )
 }
